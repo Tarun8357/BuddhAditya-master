@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDateTime;
+
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "chatHistories")
 public class CaseHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

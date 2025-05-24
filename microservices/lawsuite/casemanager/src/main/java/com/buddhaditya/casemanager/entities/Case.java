@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.List;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name ="cases")
 public class Case {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
