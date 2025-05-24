@@ -7,12 +7,12 @@ import com.buddhaditya.labtestmanager.entities.LabTestStatus;
 
 public class LabTestStatusMapper {
 
-    public static LabTestStatus toEntity(LabTestStatusRequest dto) {
+    public static LabTestStatus toEntity(LabTestStatusRequest labTestStatusRequest) {
         LabTestStatus entity = new LabTestStatus();
-        entity.setBookingId(dto.getBookingId());
-        entity.setStatus(dto.getStatus());
-        entity.setUpdatedBy(dto.getUpdatedBy());
-        entity.setComments(dto.getComments());
+        entity.setBookingId(labTestStatusRequest.getBookingId());
+        entity.setStatus(labTestStatusRequest.getStatus());
+        entity.setUpdatedBy(labTestStatusRequest.getUpdatedBy());
+        entity.setComments(labTestStatusRequest.getComments());
         return entity;
     }
 
