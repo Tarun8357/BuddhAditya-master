@@ -1,4 +1,4 @@
-package com.buddhaditya.casemanager.repository;
+package com.buddhaditya.casemanager.repositories;
 
 import com.buddhaditya.casemanager.entities.CaseHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
