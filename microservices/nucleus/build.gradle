@@ -1,0 +1,66 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.buddhaditya'
+version = '0.0.1-SNAPSHOT'
+description = 'Nucleus - Shared Library for All Microservices'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+	withJavadocJar()
+	withSourcesJar()
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Exported to consumers
+	api 'org.springframework.boot:spring-boot-starter'
+
+	// Lombok for development only
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Test dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+
+			groupId = 'com.buddhaditya'
+			artifactId = 'nucleus'
+			version = '0.0.1-SNAPSHOT'
+		}
+	}
+
+	repositories {
+		// Publish to local Maven (~/.m2/repository)
+		mavenLocal()
+	}
+}
+
+// Custom task to build + publish in one go
+tasks.register('buildAndPublish') {
+	dependsOn 'build', 'publishToMavenLocal'
+}
